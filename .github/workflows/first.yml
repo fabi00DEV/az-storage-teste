@@ -8,12 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: Listar diretório atual
+      run: ls
+
     - uses: rnakamine/azure-files-upload@v1.0.0
       with:
         connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
         source: .
         destination: templatez
 
+    
     - uses: LanceMcCarthy/Action-AzureBlobUpload@v2
       name: Azure Blob Upload with Destination folder defined
       with:
