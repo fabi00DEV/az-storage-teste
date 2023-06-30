@@ -14,3 +14,4 @@ jobs:
     
     - run: |
         az webapp list --query "[?state=='Running']"
+        az storage file upload-batch  --account-name templatez  --destination https://templatez.file.core.windows.net/teste --source templates --destination-path subpasta
