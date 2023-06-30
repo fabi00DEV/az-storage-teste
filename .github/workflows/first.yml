@@ -3,21 +3,16 @@ name: AzureLoginSample
 on: [push]
 
 jobs:
-
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+
+    - uses: actions/checkout@v3
     
     - name: Acessar diretório raiz do projeto
       run: |
         cd ${{ github.workspace }}
         ls
-
-    - uses: rnakamine/azure-files-upload@v1.0.0
-      with:
-        connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        source: .
-        destination: templatez
 
     
     - uses: LanceMcCarthy/Action-AzureBlobUpload@v2
