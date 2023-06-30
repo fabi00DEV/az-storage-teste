@@ -8,8 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Listar diretório atual
-      run: ls
+    - name: Acessar diretório raiz do projeto
+      run: |
+        cd ${{ github.workspace }}
+        ls
 
     - uses: rnakamine/azure-files-upload@v1.0.0
       with:
