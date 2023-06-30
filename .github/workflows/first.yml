@@ -1,11 +1,23 @@
-name: test
-on: 
-  push
+# File: .github/workflows/workflow.yml
 
-jobs: 
-  sync:
-    uses: rnakamine/azure-files-upload@v1.0.0
-    with:
-      connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-      source: ./templates
-      extra_args: "upload-batch --account-name templatez  --destination https://templatez.file.core.windows.net/teste --source templates --destination-path subpasta"
+on: [push]
+
+name: AzureCLISample
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          az storage file upload-batch  --account-name templatez  --destination https://templatez.file.core.windows.net/teste --source templates --destination-path subpasta
