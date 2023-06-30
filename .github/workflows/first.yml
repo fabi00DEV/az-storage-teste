@@ -8,10 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - uses: azure/login@v1
+    - uses: rnakamine/azure-files-upload@v1.0.0
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - run: |
-        az webapp list --query "[?state=='Running']"
-        az storage file upload-batch  --account-name templatez  --destination https://templatez.file.core.windows.net/teste --source templates --destination-path subpasta
+        connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        source: ./templates
+        destination: teste
