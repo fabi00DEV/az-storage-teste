@@ -1,0 +1,11 @@
+name: test
+on: 
+  push
+
+jobs: 
+  sync:
+    uses: rnakamine/azure-files-upload@v1.0.0
+    with:
+      connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+      source: ./templates
+      extra_args: "upload-batch --account-name templatez  --destination https://templatez.file.core.windows.net/teste --source templates --destination-path subpasta"
