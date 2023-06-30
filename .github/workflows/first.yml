@@ -12,4 +12,4 @@ jobs:
       with:
         connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
         source: .
-        destination: teste
+        destination: templatez
