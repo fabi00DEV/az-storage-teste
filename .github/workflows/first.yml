@@ -19,6 +19,6 @@ jobs:
       with:
         connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
         container_name: templatez
-        source_folder: .
+        source_folder: templates
         destination_folder: teste
         clean_destination_folder: true
