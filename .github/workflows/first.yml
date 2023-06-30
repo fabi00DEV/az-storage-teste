@@ -9,14 +9,13 @@ jobs:
 
     - uses: actions/checkout@v3
 
-    - uses: actions/checkout@v2
-    - uses: cahaseler/azure-fileshare-upload@v1.0.0
+    - uses: rnakamine/azure-files-upload@v1.0.0
       with:
-        account_name: templatez
-        account_key: ${{secrets.ACCOUNT_KEY}}
-        share_name: teste
-        source_dir: templates
-        cloud: AzureUSGovernment
+        connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        source: ./templates
+        destination: https://templatez.file.core.windows.net/teste
+        extra_args: '--account-name templatez --destination-path subpasta'
+
     
     # - name: Acessar diretório raiz do projeto
     #   run: |
