@@ -1,6 +1,10 @@
 # File: .github/workflows/OIDC_workflow.yml
-name: AzureLoginSample
-on: [push]
+name: Sync Storage Account
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -14,20 +18,6 @@ jobs:
         connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
         source: ./templates
         destination: https://templatez.file.core.windows.net/teste
-        extra_args: '--account-name templatez --destination-path subpasta'
+        extra_args: '--account-name templatez'
 
-    
-    # - name: Acessar diretório raiz do projeto
-    #   run: |
-    #     cd ${{ github.workspace }}
-    #     ls
-
-    
-    # - uses: LanceMcCarthy/Action-AzureBlobUpload@v2
-    #   name: Azure Blob Upload with Destination folder defined
-    #   with:
-    #     connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-    #     container_name: templatez
-    #     source_folder: src/templates
-    #     destination_folder: teste
-    #     clean_destination_folder: true
+  
