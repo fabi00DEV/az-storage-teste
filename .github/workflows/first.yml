@@ -16,7 +16,7 @@ jobs:
     - uses: rnakamine/azure-files-upload@v1.0.0
       with:
         connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        source: ./templates
+        source: ./src/templates
         destination: https://templatez.file.core.windows.net/teste
         extra_args: '--account-name templatez'
 
